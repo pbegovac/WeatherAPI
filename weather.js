@@ -14,16 +14,16 @@ fetch(
     const cityName = data.name;
     const temperature = data.main.temp.toFixed(1);
     const feel = data.main.feels_like.toFixed(1);
-    const description = data.weather[0].description;
     const wind = data.wind.speed;
     const humidity = data.main.humidity;
     const pressure = data.main.pressure;
+    const description = data.weather[0].description;
 
     const description_2 =
       description.charAt(0).toUpperCase() + description.slice(1);
 
     document.querySelector(".name").innerHTML = cityName;
-    document.querySelector(".temp").innerHTML = `Temperature: ${temperature}°C`;
+    document.querySelector(".temp").innerHTML = `${temperature}°C`;
     document.querySelector(".feel").innerHTML = `Real feel: ${feel}°C`;
     document.querySelector(".description").innerHTML = description_2;
     document.querySelector(".wind").innerHTML = `Wind: ${wind} km/h`;
