@@ -1,10 +1,10 @@
-const displayClock = () => {
-  const display = new Date().toLocaleTimeString();
-  document.querySelector(".clock").innerHTML = `Local time: ${display}`;
-  setTimeout(displayClock, 1000);
-};
+// const displayClock = () => {
+//   const display = new Date().toLocaleTimeString();
+//   document.querySelector(".clock").innerHTML = `Local time: ${display}`;
+//   setTimeout(displayClock, 1000);
+// };
 
-window.onload = displayClock();
+// window.onload = displayClock();
 
 fetch(
   "https://api.openweathermap.org/data/2.5/weather?q=Zagreb&appid=74a3c5236462135661663f32160861f0&units=metric"
@@ -29,6 +29,40 @@ fetch(
     document.querySelector(".wind").innerHTML = `Wind: ${wind} km/h`;
     document.querySelector(".humidity").innerHTML = `Humidity: ${humidity}%`;
     document.querySelector(".pressure").innerHTML = `Pressure: ${pressure} mb`;
+
+    const icon = document.createElement("img");
+    icon.src =
+      "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    document.querySelector(".icon_2").appendChild(icon);
+
+    console.log(data);
+  });
+
+fetch(
+  "https://api.openweathermap.org/data/2.5/weather?q=Split&appid=74a3c5236462135661663f32160861f0&units=metric"
+)
+  .then((response) => response.json())
+  .then((data) => {
+    const cityName = data.name;
+    const temperature = data.main.temp.toFixed(1);
+    const feel = data.main.feels_like.toFixed(1);
+    const wind = data.wind.speed;
+    const humidity = data.main.humidity;
+    const pressure = data.main.pressure;
+    const description = data.weather[0].description;
+
+    const description_2 =
+      description.charAt(0).toUpperCase() + description.slice(1);
+
+    document.querySelector(".name_2").innerHTML = cityName;
+    document.querySelector(".temp_2").innerHTML = `${temperature}°C`;
+    document.querySelector(".feel_2").innerHTML = `Real feel: ${feel}°C`;
+    document.querySelector(".description_2").innerHTML = description_2;
+    document.querySelector(".wind_2").innerHTML = `Wind: ${wind} km/h`;
+    document.querySelector(".humidity_2").innerHTML = `Humidity: ${humidity}%`;
+    document.querySelector(
+      ".pressure_2"
+    ).innerHTML = `Pressure: ${pressure} mb`;
 
     const icon = document.createElement("img");
     icon.src =
