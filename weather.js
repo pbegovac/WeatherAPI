@@ -1,6 +1,13 @@
-// fetch()4https://goweather.herokuapp.com/weather/Zagreb
+const displayClock = () => {
+  const display = new Date().toLocaleTimeString();
+  document.querySelector(".clock").innerHTML = `Local time: ${display}`;
+  setTimeout(displayClock, 1000);
+};
+
+window.onload = displayClock();
+
 fetch(
-  "https://api.openweathermap.org/data/2.5/weather?lat=45.8150&lon=15.9819&appid=74a3c5236462135661663f32160861f0&units=metric"
+  "https://api.openweathermap.org/data/2.5/weather?q=Zagreb&appid=74a3c5236462135661663f32160861f0&units=metric"
 )
   .then((response) => response.json())
   .then((data) => {
@@ -11,6 +18,7 @@ fetch(
     const wind = data.wind.speed;
     const humidity = data.main.humidity;
     const pressure = data.main.pressure;
+
     const description_2 =
       description.charAt(0).toUpperCase() + description.slice(1);
 
@@ -21,13 +29,14 @@ fetch(
     document.querySelector(".wind").innerHTML = `Wind: ${wind} km/h`;
     document.querySelector(".humidity").innerHTML = `Humidity: ${humidity}%`;
     document.querySelector(".pressure").innerHTML = `Pressure: ${pressure} mb`;
+
     console.log(data);
   });
 
-const displayClock = () => {
-  const display = new Date().toLocaleTimeString();
-  document.querySelector(".clock").innerHTML = `Local time: ${display}`;
-  setTimeout(displayClock, 1000);
-};
-
-window.onload = displayClock();
+// fetch(
+//   "api.openweathermap.org/data/2.5/forecast?q=Zagreb&appid=74a3c5236462135661663f32160861f0&units=metric"
+// )
+//   .then((response) => response.json())
+//   .then((data) => {
+//     console.log(data);
+//   });

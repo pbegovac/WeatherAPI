@@ -5,13 +5,13 @@
   font-family: "Roboto Condensed", sans-serif;
 }
 
-body {
+.weather {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background: url("skyline.jpg") no-repeat;
+  background: url("zgb.jpg") no-repeat;
   background-size: cover;
   color: black;
 }
