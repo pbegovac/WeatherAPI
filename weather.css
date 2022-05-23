@@ -13,5 +13,12 @@
   height: 100vh;
   background: url("zgb.jpg") no-repeat;
   background-size: cover;
-  color: black;
+  color: rgb(5, 5, 5);
+}
+
+@media (max-width: 1400px) {
+  .weather {
+    justify-content: flex-start;
+    padding-top: 20%;
+  }
 }
