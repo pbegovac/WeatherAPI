@@ -30,6 +30,11 @@ fetch(
     document.querySelector(".humidity").innerHTML = `Humidity: ${humidity}%`;
     document.querySelector(".pressure").innerHTML = `Pressure: ${pressure} mb`;
 
+    const icon = document.createElement("img");
+    icon.src =
+      "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    document.querySelector(".icon").appendChild(icon);
+
     console.log(data);
   });
 
